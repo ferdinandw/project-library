@@ -1,4 +1,3 @@
-
 const initialState = {
     data: [],
     dataDelete: {},
@@ -16,9 +15,9 @@ const Library = (state = initialState, action) => {
             return {...state, data:[...state.data, payload]};
 
         case 'LIBRARY_DELETE':
-            
+            console.log(state.data)
             data = state.data.filter(item => {
-                if (item.id === payload){
+                if (item._id === payload){
                     return false
                 } else {
                     return true;
@@ -27,9 +26,8 @@ const Library = (state = initialState, action) => {
             return {...state, data: data}
 
         case 'LIBRARY_EDIT':
-            data = state.map(item => {
-                console.log(state)
-                if(item.id === payload.id){
+            data = state.data.map(item => {
+                if(item._id === payload._id){
                     return payload;
                 } else {
                     return item;

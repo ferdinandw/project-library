@@ -17,12 +17,12 @@ export const add = data => {
     }
 }
 
-export const deleteData = _id => {
+export const deleteData = id => {
     return dispatch => {
-        axios.delete(`${url}/${_id}`)
+        axios.delete(`${url}/delete/${id}`)
         dispatch({
             type: `LIBRARY_DELETE`,
-            payload: _id
+            payload: id
         })
         dispatch({
             type: `LIBRARY_HIDE_DELETE`
@@ -33,12 +33,10 @@ export const deleteData = _id => {
 export const edit = data => {
     return dispatch => {
         axios.put(`${url}/edit/${data._id}`, data)
-        .then(res => {
             dispatch({
                 type: `LIBRARY_EDIT`,
-                payload: res.data.data
+                payload: data
             })
-        })
         dispatch({
             type:`LIBRARY_HIDE_EDIT`
         })
