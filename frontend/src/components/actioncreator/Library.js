@@ -4,11 +4,11 @@ const url = `https://db-library.herokuapp.com/library`
 
 export const add = data => {
     return dispatch => {
-        axios.post(url, data)
+        axios.post(`${url}/post`, data)
         .then(res => {
             dispatch({
                 type: `LIBRARY_ADD`,
-                payload: res.data
+                payload: res.data.data
             })
         })
         dispatch({
@@ -32,11 +32,11 @@ export const deleteData = _id => {
 
 export const edit = data => {
     return dispatch => {
-        axios.put(`${url}/${data._id}`, data)
+        axios.put(`${url}/edit/${data._id}`, data)
         .then(res => {
             dispatch({
                 type: `LIBRARY_EDIT`,
-                payload: res.data
+                payload: res.data.data
             })
         })
         dispatch({
@@ -51,7 +51,7 @@ export const getData = (data) => {
         .then(res => {
             dispatch({
                 type: `LIBRARY_GET`,
-                payload: res.data
+                payload: res.data.data
             })
         })
     }

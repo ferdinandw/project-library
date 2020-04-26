@@ -17,7 +17,7 @@ const Item = props => {
             <td>{props.data.number}</td>
             <td>{props.data.status}</td>
             <td><Button variant="primary" onClick={handleEdit}>Edit</Button></td>
-            <td><Button variant="danger" onClick={handleDelete}>DELETE</Button></td>
+            <td><Button variant="danger" onClick={handleDelete}>Delete</Button></td>
         </tr>
     )
 }

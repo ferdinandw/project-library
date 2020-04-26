@@ -3,14 +3,13 @@ import {connect} from 'react-redux';
 import {Table} from'react-bootstrap';
 import {getData} from './../actioncreator/Library'
 import Item from './Item'
-
+import Edit from './Edit'
 const Main = props => {
-    
     useEffect(() => {
         if (!props.data.length)
         props.getData();
     }, [])
-
+    // console.log(props.data)
     const tampilkanData = props.data.map ((item,index) => {
         return (
             <Item key={index} data={item}/>
@@ -34,18 +33,19 @@ const Main = props => {
                     {tampilkanData}
                 </tbody>
             </Table>
+            <Edit/>
         </div>
     )
 }
 
 const mapStateToProps = state => {
+    
+    
     return {
-       data: state.library.data
+       data: state.data
 }
 }
 const mapDispatchToProps = {
     getData
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Main)
-
-// export default connect(mapStateToProps)(Main)
